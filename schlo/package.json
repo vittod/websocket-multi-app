@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "prettier": "^2.2.0",
     "react-app-rewired": "^2.1.6",
     "socket.io-client": "^3.0.3"
   }
