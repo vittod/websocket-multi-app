@@ -1,13 +1,19 @@
-import {io} from 'socket.io-client';
-
+import { io } from 'socket.io-client';
 
 export let socket;
 
-export const connectSocket = () => {
-  if (!socket) {
-    socket = io('http://localhost:3005');
-    console.log('socket connected..', socket.connected);
+export const connectSocket = searchId => {
+    if (!socket) {
+        socket = io('http://localhost:3005', {
+            query: {
+                searchId: searchId,
+                app: 'schlo',
+            },
+        });
 
-    socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
-  }
+        socket.on('connect', () => console.log('socket connected on'));
+
+        socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
+    }
 };
+≤

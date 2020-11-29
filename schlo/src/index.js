@@ -5,13 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { connectSocket } from './services/socket-client';
 
-connectSocket();
+const root = document.getElementById('root-schlo')
+connectSocket(root.attributes[1].value);
 
 ReactDOM.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>,
-    document.getElementById('root-schlo')
+    root
 );
 
 // If you want to start measuring performance in your app, pass a function

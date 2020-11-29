@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9504bb98-03c4-444e-bf79-405fbf0d837e" name="Default Changelist" comment="" />
+    <list default="true" id="9504bb98-03c4-444e-bf79-405fbf0d837e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../mutter/src/createRootElem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/src/AddButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/src/AddButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutter/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../mutter/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schli/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schli/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schli/src/services/socket-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schli/src/services/socket-client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schli/src/services/socket-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schli/src/services/socket-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schlo/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schlo/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schlo/src/services/socket-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schlo/src/services/socket-client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +48,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.14.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.0" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.jest.jest_package" value="" />
@@ -36,6 +57,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.prettier.on.save" value="true" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -63,6 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606500377220</updated>
       <workItem from="1606500378329" duration="748000" />
+      <workItem from="1606647759494" duration="3839000" />
     </task>
     <servers />
   </component>
@@ -74,5 +97,9 @@
       <screen x="0" y="23" width="3374" height="1417" />
     </state>
     <state x="360" y="359" key="SettingsEditor/0.23.3374.1417/-1792.932.1792.1097@0.23.3374.1417" timestamp="1606500464152" />
+    <state x="576" y="248" key="run.anything.popup" timestamp="1606580878708">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="576" y="248" key="run.anything.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1606580878708" />
   </component>
 </project>
