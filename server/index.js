@@ -42,10 +42,7 @@ io.on('connection', socket => {
         registerClient(searchId, targetApp, socket.id);
 
         // if schlo registers, look for pending query  and trigger the search
-        if (targetApp === 'schlo') {
-            const query = getTargetSocketIdOrQuery(searchId, 'query');
-            if (query) getResultAndSendReply(socket, searchId, query, true);
-        }
+        checkPendingQuery();
     }
 
     socket.on('socketSendTest', mess => console.log(mess, socket?.handshake?.headers));
@@ -59,16 +56,7 @@ io.on('connection', socket => {
         const isValidQuery = !!query;
         // decide to open result display app
         if (isValidQuery) {
-            // check if schlo is open
-            if (getTargetSocketIdOrQuery(searchId, 'schlo')) {
-                console.log('seems not init');
-                getResultAndSendReply(socket, searchId, query);
-            } else {
-                // open schlo in mutter
-                openSchloInMother(socket, searchId);
-                cacheQuery(searchId, query);
-                console.log('seems init', searchId);
-            }
+            handleValidRequest(socket, searchId, query);
         } else {
             // if validation fails send error back to schli
             io.to(socket.id).emit('validationFail', 'dit jeht nich!');
@@ -90,7 +78,7 @@ server.listen(3005, () => console.log('listening on localhost:3005'));
 
 async function getResultAndSendReply(socket, searchId, query, isInitial) {
     // determine socket target. initial means query from cache triggered by schlo register.
-    const socketTarget = isInitial ? socket.id : getTargetSocketIdOrQuery(searchId, 'schlo');
+    const socketTarget = isInitial ? socket.id : await getTargetSocketIdOrQuery(searchId, 'schlo');
 
     try {
         // fetch result from pseudoapi
@@ -139,26 +127,6 @@ function unregisterClient(searchId, targetApp) {
     }
 }
 
-function openSchloInMother(socket, searchId) {
-    const mutter = getTargetSocketIdOrQuery(searchId, 'mutter');
-    console.log('found mutter for schlo', mutter, 'search', searchId);
-    if (mutter) {
-        io.to(mutter).emit('openSchlo', searchId);
-    }
-}
-
-function getTargetSocketIdOrQuery(searchId, key) {
-    redisClient.get(searchId, (err, reply) => {
-        if (reply) {
-            console.log(chalk.blue('found target entry to open schlo in mother', reply));
-            const entry = JSON.parse(reply);
-            return entry[key];
-        } else {
-            return null;
-        }
-    });
-}
-
 function cacheQuery(searchId, query) {
     redisClient.get(searchId, (err, reply) => {
         if (reply) {
@@ -167,4 +135,46 @@ function cacheQuery(searchId, query) {
             redisClient.set(searchId, JSON.stringify(alteredEntry));
         }
     });
+}
+
+async function openSchloInMother(socket, searchId) {
+    const mutter = await getTargetSocketIdOrQuery(searchId, 'mutter');
+    console.log('found mutter for schlo', mutter, 'search', searchId);
+    if (typeof mutter === 'string') {
+        io.to(mutter).emit('openSchlo', searchId);
+    }
+}
+
+function getTargetSocketIdOrQuery(searchId, key) {
+    return new Promise((resolve, reject) => {
+        redisClient.get(searchId, (err, reply) => {
+            if (reply) {
+                console.log(chalk.blue('found target entry to open schlo in mother', reply));
+                const entry = JSON.parse(reply);
+                resolve(entry[key]);
+            } else {
+                reject();
+            }
+        });
+    });
+}
+
+async function checkPendingQuery(socket, searchId, targetApp) {
+    if (targetApp === 'schlo') {
+        const query = await getTargetSocketIdOrQuery(searchId, 'query');
+        if (query) await getResultAndSendReply(socket, searchId, query, true);
+    }
+}
+async function handleValidRequest(socket, searchId, query) {
+    // check if schlo is open
+    const isOpen = await getTargetSocketIdOrQuery(searchId, 'schlo');
+    if (isOpen) {
+        console.log('seems not initialized');
+        await getResultAndSendReply(socket, searchId, query);
+    } else {
+        // open schlo in mutter
+        openSchloInMother(socket, searchId);
+        cacheQuery(searchId, query);
+        console.log('seems initialized', searchId);
+    }
 }
