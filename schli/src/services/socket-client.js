@@ -11,7 +11,7 @@ export const connectSocket = searchId => {
             },
         });
 
-        socket.on('connect', () => console.log('socket connected on'));
+        socket.on('connect', () => console.log('socket connected'));
 
         socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
     }

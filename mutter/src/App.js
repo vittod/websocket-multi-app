@@ -4,12 +4,14 @@ import { AddButton } from './AddButton';
 import { uid } from 'uid/secure';
 import { useEffect, useState } from 'react';
 import { createRootElem } from './createRootElem';
+import { connectSocket } from './services/socket-client';
 
 function App() {
     const [searchInstances, setSearchInstances] = useState({ mainSearch: uid() });
     const { mainSearch } = searchInstances;
 
     useEffect(() => {
+        connectSocket(mainSearch);
         const appOneAttr = [
             { name: 'id', value: 'root-schli' },
             { name: 'data-search-id', value: mainSearch },

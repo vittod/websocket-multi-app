@@ -1,4 +1,5 @@
 import { io } from 'socket.io-client';
+import { makeSchlo } from '../AddButton';
 
 export let socket;
 
@@ -7,14 +8,14 @@ export const connectSocket = searchId => {
         socket = io('http://localhost:3005', {
             query: {
                 searchId: searchId,
-                app: 'schlo',
+                app: 'mutter',
             },
         });
 
         socket.on('connect', () => console.log('socket connected'));
 
-        socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
+        socket.on('openSchlo', searchId => makeSchlo(searchId));
 
-        socket.on('displaySearchResult', result => console.log('received search result in schlo:', result));
+        socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
     }
 };

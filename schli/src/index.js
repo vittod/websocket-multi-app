@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { connectSocket } from './services/socket-client';
 
 const root = document.getElementById('root-schli');
-connectSocket(root.attributes[1].value);
+const searchId = root.attributes[1]?.value;
+if (searchId) connectSocket(searchId);
 
 ReactDOM.render(
     <React.StrictMode>

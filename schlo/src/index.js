@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { connectSocket } from './services/socket-client';
 
-const root = document.getElementById('root-schlo')
-connectSocket(root.attributes[1].value);
+const root = document.getElementById('root-schlo');
+const searchId = root.attributes[1]?.value;
+if (searchId) connectSocket(searchId);
 
 ReactDOM.render(
     <React.StrictMode>
