@@ -42,7 +42,7 @@ io.on('connection', socket => {
         registerClient(searchId, targetApp, socket.id);
 
         // if schlo registers, look for pending query  and trigger the search
-        checkPendingQuery();
+        checkPendingQuery(socket, searchId, targetApp);
     }
 
     socket.on('socketSendTest', mess => console.log(mess, socket?.handshake?.headers));
@@ -83,8 +83,8 @@ async function getResultAndSendReply(socket, searchId, query, isInitial) {
     try {
         // fetch result from pseudoapi
         const result = await waitAndFetch(query);
+        console.log(chalk.greenBright('found result', result));
         // send result back to schlo
-        console.log(chalk.greenBright('sending result', result));
         io.sockets.to(socketTarget).emit('displaySearchResult', result);
         // clear query cache if initial query
         if (isInitial) cacheQuery(searchId, undefined);
@@ -118,12 +118,8 @@ function registerClient(searchId, targetApp, socketId) {
 
 function unregisterClient(searchId, targetApp) {
     if (targetApp === 'mutter') {
+        console.log('unregistering', targetApp, searchId);
         redisClient.del(searchId);
-    } else {
-        redisClient.get(searchId, (err, reply) => {
-            const alteredEntry = { ...JSON.parse(reply), [targetApp]: undefined };
-            redisClient.set(searchId, JSON.stringify(alteredEntry));
-        });
     }
 }
 
