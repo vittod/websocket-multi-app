@@ -85,7 +85,7 @@ async function getResultAndSendReply(socket, searchId, query, isInitial) {
         const result = await waitAndFetch(query);
         console.log(chalk.greenBright('found result', result));
         // send result back to schlo
-        io.sockets.to(socketTarget).emit('displaySearchResult', result);
+        io.sockets.to(socketTarget).emit('displaySearchResult', { result, query });
         // clear query cache if initial query
         if (isInitial) cacheQuery(searchId, undefined);
     } catch (err) {
@@ -93,12 +93,12 @@ async function getResultAndSendReply(socket, searchId, query, isInitial) {
     }
 }
 
-// fetch results from pseudoapi
+// TODO: fetch results from api
 async function waitAndFetch(query) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             query === 'wrong question' ? reject('no match') : resolve('gory damn result');
-        }, 0);
+        }, 500);
     });
 }
 
@@ -126,7 +126,9 @@ function unregisterClient(searchId, targetApp) {
 function cacheQuery(searchId, query) {
     redisClient.get(searchId, (err, reply) => {
         if (reply) {
-            console.log(chalk.greenBright('stashing query in register', reply));
+            query
+                ? console.log(chalk.greenBright(`stashing query ${query} in register ${reply}`))
+                : console.log(chalk.greenBright(`clear query from register ${reply}`));
             const alteredEntry = { ...JSON.parse(reply), query: query };
             redisClient.set(searchId, JSON.stringify(alteredEntry));
         }
@@ -135,7 +137,7 @@ function cacheQuery(searchId, query) {
 
 async function openSchloInMother(socket, searchId) {
     const mutter = await getTargetSocketIdOrQuery(searchId, 'mutter');
-    console.log('found mutter for schlo', mutter, 'search', searchId);
+    console.log('found mother for schlo', mutter, 'search', searchId);
     if (typeof mutter === 'string') {
         io.to(mutter).emit('openSchlo', searchId);
     }
@@ -145,7 +147,7 @@ function getTargetSocketIdOrQuery(searchId, key) {
     return new Promise((resolve, reject) => {
         redisClient.get(searchId, (err, reply) => {
             if (reply) {
-                console.log(chalk.blue('found target entry to open schlo in mother', reply));
+                console.log(chalk.blue(`found target entry ${reply} for key ${key}`));
                 const entry = JSON.parse(reply);
                 resolve(entry[key]);
             } else {

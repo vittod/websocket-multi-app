@@ -6,8 +6,9 @@ const socketSendTest = value => {
 const openSchloTest = () => {
     socket.emit('openSchloTest');
 };
-const sendSearchRequest = () => {
-    socket.emit('processSearchRequest', 'bolo');
+const sendSearchRequest = req => {
+    console.log('emitting search req from schli', req);
+    socket.emit('processSearchRequest', req || 'bolo');
 };
 
 export const soc = { socketSendTest, openSchloTest, sendSearchRequest };

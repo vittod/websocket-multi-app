@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9504bb98-03c4-444e-bf79-405fbf0d837e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../schlo/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schli/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schli/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schli/src/services/socket-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schli/src/services/socket-client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schli/src/services/socket-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schli/src/services/socket-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schlo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../schlo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schlo/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schlo/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schlo/src/services/socket-client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../schlo/src/services/socket-client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../schlo/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../schlo/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
@@ -70,7 +78,8 @@
       <updated>1606500377220</updated>
       <workItem from="1606500378329" duration="748000" />
       <workItem from="1606647759494" duration="3839000" />
-      <workItem from="1606684615399" duration="14291000" />
+      <workItem from="1606684615399" duration="17185000" />
+      <workItem from="1606944233691" duration="3425000" />
     </task>
     <servers />
   </component>

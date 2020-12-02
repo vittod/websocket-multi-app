@@ -14,5 +14,6 @@ export const connectSocket = searchId => {
         socket.on('connect', () => console.log('socket connected'));
 
         socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
+        socket.on('validationFail', failMsg => console.log('validation failed:', failMsg));
     }
 };

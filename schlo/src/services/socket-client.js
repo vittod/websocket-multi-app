@@ -1,4 +1,5 @@
 import { io } from 'socket.io-client';
+import { Store } from '../store';
 
 export let socket;
 
@@ -15,6 +16,9 @@ export const connectSocket = searchId => {
 
         socket.on('testCliRec', testCliRec => console.log('received test:', testCliRec));
 
-        socket.on('displaySearchResult', result => console.log('received search result in schlo:', result));
+        socket.on('displaySearchResult', ({ result, query }) => {
+            console.log('received search result in schlo:', result);
+            Store.set({ displayResult: { result, query } });
+        });
     }
 };
