@@ -1,4 +1,4 @@
-export const createRootElem = (attributes, scriptsPort, target) => {
+export const createRootElem = (attributes, port, target) => {
     const rootDiv = document.createElement('div');
 
     attributes.forEach(({ name, value }) => {
@@ -6,12 +6,16 @@ export const createRootElem = (attributes, scriptsPort, target) => {
         rootDiv.setAttribute(name, value);
     });
 
+    const scriptsPort = process.env.NODE_ENV !== 'production' ? port : 3005;
+    const path =
+        process.env.NODE_ENV !== 'production' ? 'static' : attributes[0].value.substring(5, attributes[0].value.length);
+
     const scripOne = document.createElement('script');
-    scripOne.setAttribute('src', `http://localhost:${scriptsPort}/static/js/bundle.js`);
+    scripOne.setAttribute('src', `http://localhost:${scriptsPort}/${path}/js/bundle.js`);
     const scripTwo = document.createElement('script');
-    scripTwo.setAttribute('src', `http://localhost:${scriptsPort}/static/js/0.chunk.js`);
+    scripTwo.setAttribute('src', `http://localhost:${scriptsPort}/${path}/js/0.chunk.js`);
     const scripThree = document.createElement('script');
-    scripThree.setAttribute('src', `http://localhost:${scriptsPort}/static/js/main.chunk.js`);
+    scripThree.setAttribute('src', `http://localhost:${scriptsPort}/${path}/js/main.chunk.js`);
 
     const [body] = document.getElementsByTagName('body');
 
