@@ -14,18 +14,16 @@ redisClient.on('error', function (error) {
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ['GET', 'POST'],
-    },
+    // cors: {
+    //     origin: 'http://localhost:3000',
+    //     methods: ['GET', 'POST'],
+    // },
 });
 
-// rest test route
-app.get('/test-route', (req, res, next) => {
-    console.log(req.baseUrl, 'got req');
-    res.send('hello');
-    next();
-});
+// rest route for mother
+app.use(express.static('build'));
+app.use('/schli', express.static('schli'));
+app.use('/schlo', express.static('schlo'));
 
 // websocket routing
 io.on('connection', socket => {
