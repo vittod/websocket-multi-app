@@ -1,4 +1,4 @@
-export const createRootElemForProd = (attributes, port, target) => {
+export const createRootElemForProd = (attributes, target) => {
     const rootDiv = document.createElement('div');
 
     attributes.forEach(({ name, value }) => {

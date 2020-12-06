@@ -5,18 +5,20 @@ import { uid } from 'uid/secure';
 import { useEffect, useState } from 'react';
 import { connectSocket } from './services/socket-client';
 import { createRootElemForProd } from './createRootElemForProd';
+import { createChildCssForProd } from './createChildCssForProd';
 
 function App() {
     const [searchInstances, setSearchInstances] = useState({ mainSearch: uid() });
     const { mainSearch } = searchInstances;
 
     useEffect(() => {
+        createChildCssForProd('schli');
         connectSocket(mainSearch);
         const appOneAttr = [
             { name: 'id', value: 'root-schli' },
             { name: 'data-search-id', value: mainSearch },
         ];
-        createRootElemForProd(appOneAttr, 3001, 'home-of-schli');
+        createRootElemForProd(appOneAttr, 'home-of-schli');
     });
 
     return (
@@ -27,9 +29,10 @@ function App() {
                 <br />
                 <AddButton searchId={mainSearch} />
             </header>
-
-            <section id="home-of-schli" />
-            <section id="home-of-schlo" />
+            <div className="mutter-space-for-child-apps">
+                <section className="child-app" id="home-of-schli" />
+                <section className="child-app" id="home-of-schlo" />
+            </div>
         </div>
     );
 }

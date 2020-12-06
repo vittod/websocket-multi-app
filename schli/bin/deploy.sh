@@ -21,7 +21,7 @@ echo "JS source dir $SOURCE_DIR_JS"
 pushd ../css > /dev/null
 SOURCE_DIR_CSS=$(pwd)
 echo "CSS source dir $SOURCE_DIR_CSS"
-rm css-manifest.json
+rm -f css-manifest.json
 
 echo '[' >> css-manifest.json
 
@@ -37,7 +37,7 @@ echo ']' >> css-manifest.json
 popd > /dev/null
 
 # build js manifest
-rm js-manifest.json
+rm -f js-manifest.json
 
 echo '[' >> js-manifest.json
 
