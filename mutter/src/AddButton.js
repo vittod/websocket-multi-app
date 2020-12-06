@@ -1,13 +1,6 @@
 import React, { useCallback } from 'react';
-import { createRootElem } from './createRootElem';
+import { makeSchlo } from './make-schlo';
 
-export const makeSchlo = searchId => {
-    const appTwoAttr = [
-        { name: 'id', value: 'root-schlo' },
-        { name: 'data-search-id', value: searchId },
-    ];
-    createRootElem(appTwoAttr, 3002);
-};
 export const AddButton = ({ searchId }) => {
     const schloMaker = useCallback(() => makeSchlo(searchId), [searchId]);
 

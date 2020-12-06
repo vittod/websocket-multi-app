@@ -3,8 +3,8 @@ import './App.css';
 import { AddButton } from './AddButton';
 import { uid } from 'uid/secure';
 import { useEffect, useState } from 'react';
-import { createRootElem } from './createRootElem';
 import { connectSocket } from './services/socket-client';
+import { createRootElemForProd } from './createRootElemForProd';
 
 function App() {
     const [searchInstances, setSearchInstances] = useState({ mainSearch: uid() });
@@ -16,7 +16,7 @@ function App() {
             { name: 'id', value: 'root-schli' },
             { name: 'data-search-id', value: mainSearch },
         ];
-        createRootElem(appOneAttr, 3001, 'home-of-schli');
+        createRootElemForProd(appOneAttr, 3001, 'home-of-schli');
     });
 
     return (
@@ -29,6 +29,7 @@ function App() {
             </header>
 
             <section id="home-of-schli" />
+            <section id="home-of-schlo" />
         </div>
     );
 }

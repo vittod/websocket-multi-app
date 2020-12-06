@@ -17,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "./bin/deploy.sh",
+    "build-deploy": "yarn run build && ./bin/deploy.sh"
   },
   "eslintConfig": {
     "extends": [

@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
-import { makeSchlo } from '../AddButton';
+import { makeSchlo } from '../make-schlo';
 
 export let socket;
 

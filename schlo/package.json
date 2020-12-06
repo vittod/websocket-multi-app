@@ -17,7 +17,9 @@
     "start": "PORT=3002 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "deploy": "./bin/deploy.sh schli",
+    "build-deploy": "yarn run build && ./bin/deploy.sh schlo"
   },
   "eslintConfig": {
     "extends": [
