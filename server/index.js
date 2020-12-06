@@ -21,7 +21,7 @@ const io = new Server(server, {
 });
 
 // rest route for mother
-app.use(express.static('build'));
+app.use(express.static('build-mutter'));
 app.use('/schli', express.static('schli'));
 app.use('/schlo', express.static('schlo'));
 
