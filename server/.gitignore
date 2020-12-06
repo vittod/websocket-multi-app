@@ -12,6 +12,7 @@
 
 # production
 /build
+/build-mutter
 
 # misc
 .DS_Store
